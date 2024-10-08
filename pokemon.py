@@ -4,6 +4,7 @@ import requests
 import json
 import time
 import sql_tools
+from tqdm import tqdm
 
 class Pokemon:
     __slots__ = ['__dex', '__name', '__type', '__generation', '__is_baby', '__is_legendary', '__is_mythical', '__color']
@@ -181,7 +182,7 @@ def write_all_to_json(start_num):
         print('Last written Pokemon was ' + str(last_written))
         return last_written
 
-def write_persistent(cooldown):
+def write_persistent(cooldown=30):
     start_num = 1
     with open('pokemon.json', 'r') as f:
         current_length = len(f.readlines())
