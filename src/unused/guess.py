@@ -1,4 +1,4 @@
-from pokemon import get_random_pokemon, get_pokemon_by_name
+from src.unused.pokemon import get_random_pokemon, get_pokemon_by_name
 
 class Guess:
     

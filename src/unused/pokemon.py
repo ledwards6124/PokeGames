@@ -3,7 +3,7 @@ import random
 import requests
 import json
 import time
-import sql_tools
+import src.sql_tools as sql_tools
 from tqdm import tqdm
 
 class Pokemon:
@@ -196,11 +196,51 @@ def write_persistent(cooldown=30):
                 write_persistent(cooldown)
 
                     
-
+def write_hyphen_free_pokedex(input_file='pokemon.json', output_file='pokemon_hyphen_free.json'):
+    with open(input_file, 'r') as f:
+        data = json.load(f)
+        for p in data:
+            if '-' in p['name']:
+                if p['name'] == 'Ho-oh' or p['name'] == 'Wo-chien' or p['name'] == 'Chien-pao' or p['name'] == 'Ting-lu' or p['name'] == 'Chi-yu' or p['name'] == 'Jangmo-o' or p['name'] == 'Hakamo-o' or p['name'] == 'Kommo-o' or p['name'] == 'Type-Null':
+                    p['name'] = edit_hyphenated(p['name'])
+                elif 'Tapu' in p['name']:
+                    p['name'] = edit_name(p['name'])
+                elif 'Iron' in p['name']:
+                    p['name'] = edit_name(p['name'])
+                elif 'ing' in p['name'] and p['dex'] > 900:
+                    p['name'] = edit_name(p['name'])
+                elif 'Brute' in p['name'] or 'Scream' in p['name'] or 'Flutter' in p['name'] or 'Sandy' in p['name'] or 'Great' in p['name']:
+                    p['name'] = edit_name(p['name'])
+                else:
+                    p['name'] = p['name'].split('-')[0].capitalize()
+        f.close()
+    with open(output_file, 'w') as f:
+        json.dump(data, f, indent=4)
+                    
         
+def edit_name(name):
+
+    name = name.split('-')
+    for i in range(len(name)):
+        name[i] = name[i].capitalize()
+    name = ' '.join(name)
+    return name
+
+def edit_hyphenated(name):
+
+    name = name.split('-')
+    for i in range(len(name)):
+        name[i] = name[i].capitalize()
+    name = '-'.join(name)
+    return name
+
+
+
+def remove_suffix(name):
+    return name.split(' ')[0]
+
 def main():
-    
-    write_persistent(30)
+    write_hyphen_free_pokedex()
     
 if __name__ == '__main__':
     main()
