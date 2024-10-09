@@ -11,9 +11,9 @@ with open('data\pokedex.json', 'r') as f:
 class Quiz(Resource):
     
     __slots__ = ['__guessed', '__tries', '__elligible', '__region']
-    def __init__(self, region=-1):
+    def __init__(self, region=0):
         self.__region = region
-        if region == -1:
+        if region == 0:
             self.__elligible = [p['name'] for p in POKEDEX]
         else:
             self.__elligible = [p['name'] for p in POKEDEX if p['generation'] == region ]
@@ -32,7 +32,7 @@ class Quiz(Resource):
             
     def post(self, region):
         self.__init__(region)
-        return jsonify(f'Welcome to the guessing game, you chose region {self.__region}!')
+        return jsonify(f'Welcome to the guessing game, you chose region {self.__region}!') if region != 0 else jsonify(f'Welcome to the guessing game! Good luck naming them all!')
             
 
 class Init(Resource):
