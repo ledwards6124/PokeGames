@@ -14,6 +14,7 @@ api.add_resource(Init, '/')
 api.add_resource(Dex, '/dex')
 api.add_resource(NamingQuiz, '/quiz')
 
+
     
 def main():
     app.run(debug=True)

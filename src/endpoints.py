@@ -126,26 +126,83 @@ class Dex(Resource):
                 elif isinstance(type, str) and type in p['type']:
                     filtered.append(p)
         return filtered if len(filtered) > 0 else jsonify('Invalid type!')
-        
+    
+    def __get_by_color(self, color):
+        if color:
+            filtered = []
+            for p in POKEDEX:
+                if color == p['color']:
+                    filtered.append(p)
+        return filtered if len(filtered) > 0 else jsonify('Invalid color!')
+    
+    def __get_by_legendary(self):
+        filtered = []
+        for p in POKEDEX:
+            if p['is_legendary'] == True:
+                filtered.append(p)
+        return filtered
+    
+    def __get_by_mythical(self):
+        filtered = []
+        for p in POKEDEX:
+            if p['is_mythical'] == True:
+                filtered.append(p)
+        return filtered
 
+    def __get_by_baby(self):
+        filtered = []
+        for p in POKEDEX:
+            if p['is_baby'] == True:
+                filtered.append(p)
+        return filtered
+    
+    def __get_by_generation(self, generation):
+        filtered = []
+        for p in POKEDEX:
+            if p['generation'] == int(generation):
+                filtered.append(p)
+        return filtered
+        
     def get(self):
         """
-        Returns a Pokemon from the pokedex by id, name, or type
+        Returns a list of all Pokemon that satisfy all criteria from the request query string if they exist
+
         Parameters:
             id (int): The id of the Pokemon
             name (str): The name of the Pokemon
             type (str): The type of the Pokemon
+            color (str): The color of the Pokemon
+            generation (str): The generation of the Pokemon
+            legendary (str): The legendary status of the Pokemon
+            mythical (str): The mythical status of the Pokemon
+            baby (str): The baby status of the Pokemon
+
         Returns:
-            A Pokemon object or a json object with an error message
+            A list of Pokemon objects or a json object with an error message
         """
         number = request.args.get('id')
         name = request.args.get('name')
         type = request.args.get('type')
-        if number:
-            return self.__get_by_number(number)
-        elif name:
-            return self.__get_by_name(name)
-        elif type:
-            return self.__get_by_type(type)
-        else:
-            return jsonify('Pokemon not found!')
+        color = request.args.get('color')
+        generation = request.args.get('generation')
+        legendary = request.args.get('legendary')
+        mythical = request.args.get('mythical')
+        baby = request.args.get('baby')
+        
+        filtered = []
+        for p in POKEDEX:
+            if (
+                (number is None or str(p['dex']) == number) and
+                (name is None or name.lower() in p['name'].lower()) and
+                (type is None or type.lower() in [t.lower() for t in p['type']]) and
+                (color is None or p['color'].lower() == color.lower()) and
+                (generation is None or str(p['generation']) == generation) and
+                (legendary is None or str(p['is_legendary']).lower() == legendary.lower()) and
+                (mythical is None or str(p['is_mythical']).lower() == mythical.lower()) and
+                (baby is None or str(p['is_baby']).lower() == baby.lower())
+            ):
+                filtered.append(p)
+                
+        return filtered if len(filtered) > 0 else jsonify('No Pokemon found with the specified criteria!')
+            
+            

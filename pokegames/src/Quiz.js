@@ -35,6 +35,11 @@ class Quiz extends React.Component {
             }
         }).then(jData => {
         })
+        this.setState({
+            guessedNames: {},
+            guessedDex: new Set(),
+            textBox: ''
+        })
     }
 
     guess = () => {
@@ -62,17 +67,16 @@ class Quiz extends React.Component {
         } else {
             window.alert(`${g} is an invalid guess!`)
         }
+        this.clear();
     }
 
     handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             this.guess();
-            this.clear();
         }
     }
 
     render() {
-        this.beginQuiz();
         return (
         <>
         <div className="overlay">
