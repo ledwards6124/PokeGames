@@ -246,3 +246,13 @@
 
 }
 
+.stat-container {
+  display: flexbox;
+  flex-wrap: wrap;
+  align-items: center;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 5px;
+  margin: 5px;
+  align-items: center;
+}

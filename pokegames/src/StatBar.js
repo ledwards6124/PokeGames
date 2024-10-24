@@ -65,7 +65,9 @@ class StatBar extends React.Component {
             <>
             <div className='stat-container'>
                 {formattedCategory}: {stat}
-                <progress value={scale}/>
+                <progress style={{
+
+                }} value={scale}/>
             </div>
             </>
         )
