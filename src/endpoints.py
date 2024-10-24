@@ -182,7 +182,8 @@ class Dex(Resource):
         """
         number = request.args.get('id')
         name = request.args.get('name')
-        type = request.args.get('type')
+        p_type = request.args.get('pType')
+        s_type = request.args.get('sType')
         color = request.args.get('color')
         generation = request.args.get('generation')
         legendary = request.args.get('legendary')
@@ -194,7 +195,8 @@ class Dex(Resource):
             if (
                 (number is None or str(p['dex']) == number) and
                 (name is None or name.lower() in p['name'].lower()) and
-                (type is None or type.lower() in [t.lower() for t in p['type']]) and
+                (p_type is None or p_type.lower() in [t.lower() for t in p['type']]) and
+                (s_type is None or s_type.lower() in [t.lower() for t in p['type']]) and
                 (color is None or p['color'].lower() == color.lower()) and
                 (generation is None or str(p['generation']) == generation) and
                 (legendary is None or str(p['is_legendary']).lower() == legendary.lower()) and

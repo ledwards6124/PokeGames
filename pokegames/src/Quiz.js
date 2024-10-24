@@ -1,5 +1,6 @@
 import React from 'react';
 import Guessed from './Guessed';
+import NavMenu from './NavMenu';
 
 class Quiz extends React.Component {
 
@@ -79,15 +80,18 @@ class Quiz extends React.Component {
     render() {
         return (
         <>
-        <div className="overlay">
-                <button className="reset-quiz" onClick={this.beginQuiz}>Reset Quiz</button>
-        </div>
-        <div className="guess">
-            <input onKeyDown={this.handleKeyPress} name='textBox' type="text" placeholder='Guess a Pokemon!' value={this.state.textBox} onChange={this.handleInputChange} />
-            <input onKeyDown={this.handleKeyPress} type="button" value="Guess" onClick={this.guess} />
-        </div>
-        <div className='guessed'>
-            <Guessed guessed={this.state.guessedNames}></Guessed>
+        <NavMenu></NavMenu>
+        <div className='quiz'>
+            <div className="overlay">
+                    <button className="reset-quiz" onClick={this.beginQuiz}>Reset Quiz</button>
+            </div>
+            <div className="guess">
+                <input className='quiz-text' onKeyDown={this.handleKeyPress} name='textBox' type="text" placeholder='Guess a Pokemon!' value={this.state.textBox} onChange={this.handleInputChange} />
+                <input onKeyDown={this.handleKeyPress} type="button" value="Guess" onClick={this.guess} />
+            </div>
+            <div className='guessed'>
+                <Guessed guessed={this.state.guessedNames}></Guessed>
+            </div>
         </div>
         </>
         )

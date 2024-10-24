@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 import time
@@ -77,12 +78,40 @@ def get_all():
             sql_file.write(format_data(data))
             time.sleep(5)
             
+def get_image(name):
+    r = requests.get(f'https://img.pokemondb.net/sprites/scarlet-violet/normal/1x/{name}.png')
+    if r.status_code == 200:
+        path = os.path.join('data\\images', f'{name}.png')
+        with open(path, 'wb') as f:
+            f.write(r.content)     
+                
+def get_images(index):
+    try:
+        with open('data/pokedex.json', 'r') as f:
+            data = json.load(f)
+            for index in range(1026):
+                name = data[index]['name'].lower()
+                get_image(name)
+                index += 1
+                time.sleep(1)
+    except:
+        return index
+    
+
+            
         
 
 
         
 def main():
-    get_all()
+    index = 9
+    try:
+        index = get_images(index)
+    except ConnectionError:
+        print('Connection refused...')
+        time.sleep(10)
+        get_images(index)
+        
     
 if __name__ == '__main__':
     main()
