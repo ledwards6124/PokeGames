@@ -46,7 +46,7 @@ class Homepage extends React.Component {
     render() {
         return (
             <div>
-                <NavMenu></NavMenu>
+                <NavMenu name={'Home'}></NavMenu>
                 <p>Homepage</p>
                 <img src={this.state.sprite} alt='Pokemon Sprite'></img>
 

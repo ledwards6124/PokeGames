@@ -9,8 +9,8 @@ class NavMenu extends React.Component {
     render() {
         return (
             <>
-            <Navbar>
-                    <NavbarBrand href='/'>Home</NavbarBrand>
+            <Navbar className='nav'>
+                    <NavbarBrand href='/'>{this.props.name}</NavbarBrand>
                     <Nav className="me-auto">
                         <NavLink href="/">Home</NavLink>
                         <NavLink href="quiz">Quiz</NavLink>

@@ -246,3 +246,17 @@
 
 }
 
+.nav {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: #3e3b3e;
+  color: white;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+}
+
+.me-auto {
+  
+}

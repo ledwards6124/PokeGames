@@ -80,7 +80,7 @@ class Quiz extends React.Component {
     render() {
         return (
         <>
-        <NavMenu></NavMenu>
+        <NavMenu name={'Quiz'}></NavMenu>
         <div className='quiz'>
             <div className="overlay">
                     <button className="reset-quiz" onClick={this.beginQuiz}>Reset Quiz</button>
