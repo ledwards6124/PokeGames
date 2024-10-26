@@ -90,7 +90,6 @@ class Search extends React.Component {
                 resNames: []
             })
             this.state.results = jData;
-            this.updateResults();
             })
 
     }
@@ -109,30 +108,9 @@ class Search extends React.Component {
         });
     }
 
-    updateResults = () => {
-        for (let i = 0; i < this.state.results.length; i ++) {
-            this.state.resNames.push(this.state.results[i].name);
-            this.state.resDex.push(this.state.results[i].id);
-            this.state.resGen.push(this.state.results[i].generation);
-            this.state.resColor.push(this.state.results[i].color);
-            this.state.resBaby.push(this.state.results[i].is_baby);
-            this.state.resTypes.push(this.state.results[i].type);
-            this.state.resLegend.push(this.state.results[i].is_legendary);
-            this.state.resMyth.push(this.state.results[i].is_mythical);
-        }
-    }
-
     resetResults = () => {
         this.setState({
-            results: [],
-            resDex: [],
-            resNames: [],
-            resTypes: [],
-            resGen: [],
-            resColor: [],
-            resLegend: [],
-            resMyth: [],
-            resBaby: []
+            results: []
         })
     }
 

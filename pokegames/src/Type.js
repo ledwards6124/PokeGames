@@ -33,13 +33,15 @@ class Type extends React.Component {
             <>
             <div style={{
                 backgroundColor: this.colors[this.props.type],
-                borderRadius: '10%',
+                borderRadius: '10% 10% 10% 10%',
                 height: '115%',
                 width: '50%',
                 border: '2px solid black',
                 textAlign: 'center',
                 color: 'white',
                 textShadow: '2px 2px 2px black',
+                maxWidth: '4.5vw',
+                textAlign: 'center',
 
 
             }}>{this.props.type.toUpperCase()}</div>
