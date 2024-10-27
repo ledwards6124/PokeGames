@@ -63,8 +63,8 @@ body {
 
 .quiz-nav {
   display: flex;
-  top: 15%;
-  left: 15%;
+  top: 35vh;
+  left: 4vw;
   position: absolute;
   transform: translate(0, 15vh);
 }
@@ -225,7 +225,7 @@ body {
   display: flexbox;
   flex-wrap: wrap;
   min-width: 25%;
-  max-width: 50%;
+  max-width: 40%;
   gap: 10px;
   border-style: solid;
   border-color: black;
@@ -277,6 +277,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.sprite-container * {
+  max-width: 50%;
 }
 
 .search-nav {
@@ -454,12 +458,13 @@ body {
 }
 
 .homepage-sprite-container {
+  margin-top: 10%;
   padding: 5%;
 }
 
 .homepage-sprite {
-  width: 250%;
-  height: 250%;
+  width: 200%;
+  height: 200%;
   object-fit: contain;
   border: solid;
   border-radius: 15% 15% 15% 15%;
@@ -468,7 +473,7 @@ body {
 }
 
 .homepage-div {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: #3e3b3e;
@@ -478,7 +483,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 }
+
+
 
 .homepage-nav-menu {
   display: flex;

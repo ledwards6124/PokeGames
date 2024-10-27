@@ -79,7 +79,7 @@ class Search extends React.Component {
 
     search = () => {
         const query = this.getQuery();
-        fetch(`http://localhost:5000/dex?${query}`, {
+        fetch(`https://ledwards6124.pythonanywhere.com/dex?${query}`, {
             method: 'GET'
         }).then(response => {
             if (response.status === 200) {

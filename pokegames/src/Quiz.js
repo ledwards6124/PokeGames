@@ -29,7 +29,7 @@ class Quiz extends React.Component {
 
 
     beginQuiz = ()  => {
-        fetch('http://localhost:5000/quiz', {
+        fetch('https://ledwards6124.pythonanywhere.com/quiz', {
             method: 'DELETE'
         }).then(response => {
             if (response.status === 200) {
@@ -45,7 +45,7 @@ class Quiz extends React.Component {
 
     updateGuessed = () => {
 
-        fetch('http://localhost:5000/quiz', {
+        fetch('https://ledwards6124.pythonanywhere.com/quiz', {
             method: 'GET'
         }).then(response => {
             if (response.status === 200) {
@@ -63,7 +63,7 @@ class Quiz extends React.Component {
 
     guess = () => {
         if (this.state.textBox) {
-            fetch('http://localhost:5000/quiz?name=' + this.state.textBox, {
+            fetch('https://ledwards6124.pythonanywhere.com/quiz?name=' + this.state.textBox, {
                 method: 'POST',
             }).then(response => {
                 if (response.status === 200) {
