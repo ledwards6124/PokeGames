@@ -26,7 +26,7 @@ class GuessingGame:
             for p in POKEDEX:
                 if p['name'] == name and name not in self.guessed:
                     self.guessed.add((p['dex'], name))
-                    self.score += 1
+                    self.score = len(self.guessed)
                     return p
             else:
                 return jsonify('Already guessed {}!'.format(name))

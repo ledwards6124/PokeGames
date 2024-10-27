@@ -40,6 +40,7 @@ class Search extends React.Component {
     }
 
     showModal = () => {
+        console.log(this.state.open);
         this.setState({ open: !this.state.open });
     }
 
@@ -95,10 +96,14 @@ class Search extends React.Component {
     }
 
     submit = () => {
-        this.search();
-        this.clear();
-        this.showModal();
-        
+        if (this.state.legendary  || this.state.mythical || this.state.baby || this.state.dex || this.state.name || this.state.generation || this.state.pType || this.state.sType || this.state.color) {
+            this.search();
+            this.clear();
+            this.showModal();
+        } else {
+            window.alert('Need to specify criteria!')
+        }
+            
     }
 
     handleInputChange = (event) => {
@@ -139,48 +144,69 @@ class Search extends React.Component {
 
         return (
             <>
-            <div className='search-background'>
-            <NavMenu></NavMenu>
             <div className='search-container'>
-                <Button className='search-button' onClick={this.showModal}>Search</Button>
-                <Button className='reset-button' onClick={this.resetResults}>Reset</Button>
-                <div className='modal-div'>
-                <Modal  isOpen={this.state.open} toggle={this.showModal} className='search-modal'>
-                    <ModalHeader className='modal-header'>Enter Pokemon details here:</ModalHeader>
-                    <ModalBody>
-                        <Input className='modal-field' type='number' min={1} max={1025} name='dex' placeholder='Dex Number' value={this.state.dex} onChange={this.handleInputChange} />
-                        <Input className='modal-field' type='text' name='name' placeholder='Name' value={this.state.name} onChange={this.handleInputChange} />
-                        <Input className='modal-field' type='number' min={1} max={9} name='generation' placeholder='Generation' value={this.state.generation} onChange={this.handleInputChange} />
-                        <Input className='modal-field' type='text' name='pType' placeholder='Primary Type' value={this.state.pType} onChange={this.handleInputChange} />
-                        <Input className='modal-field' type='text' name='sType' placeholder='Secondary Type' value={this.state.sType} onChange={this.handleInputChange}/>
-                        <Input className='modal-field'type='text' name='color' placeholder='Color' value={this.state.color} onChange={this.handleInputChange} />
+                <h1>Results:</h1>
+                    <Modal isOpen={this.state.open} toggle={this.showModal} className='search-modal'>
+                        <ModalHeader className='modal-header'>Enter Pokemon details here:</ModalHeader>
+                        <ModalBody className='modal-body'>
+                            
+                            <Label>
+                                Dex Number:
+                                <Input className='modal-field' type='number' min={1} max={1025} name='dex' placeholder='Dex Number' value={this.state.dex} onChange={this.handleInputChange} />
+                            </Label>
+                            <Label>
+                                Name:
+                                <Input className='modal-field' type='text' name='name' placeholder='Name' value={this.state.name} onChange={this.handleInputChange} />
+                            </Label>
+                            <Label>
+                                Generation:
+                                <Input className='modal-field' type='number' min={1} max={9} name='generation' placeholder='Generation' value={this.state.generation} onChange={this.handleInputChange} />
+                            </Label>
+                            <Label>
+                                Primary Type:
+                                <Input className='modal-field' type='text' name='pType' placeholder='Primary Type' value={this.state.pType} onChange={this.handleInputChange} />
+                            </Label>
+                            <Label>
+                                Secondary Type:
+                                <Input className='modal-field' type='text' name='sType' placeholder='Secondary Type' value={this.state.sType} onChange={this.handleInputChange}/>
+                            </Label>
+                            <Label>
+                                Color:
+                                <Input className='modal-field' type='text' name='color' placeholder='Color' value={this.state.color} onChange={this.handleInputChange} />
+                            </Label>
 
-                        <Label className='check-label'>
-                            <Input type='checkbox' defaultChecked={false} name='legendary' placeholder='Legendary' value={this.state.legendary} onChange={this.handleCheckbox} />
-                            Legendary
-                        </Label>
-                        <Label className='check-label'>
-                            <Input type='checkbox' defaultChecked={false} name='mythical' placeholder='Mythical' value={this.state.mythical} onChange={this.handleCheckbox} />
-                            Mythical
-                        </Label>
-                        <Label className='check-label'>
-                            <Input type='checkbox' defaultChecked={false} name='baby' placeholder='Baby' value={this.state.baby} onChange={this.handleCheckbox} />
-                            Baby
-                        </Label>
-                        <ModalFooter className='modal-footer'>
-                            <Button color="footer-confirm" onClick={this.submit}>Submit</Button>
-                            <Button color="footer-cancel" onClick={this.showModal}>Cancel</Button>
-                        </ModalFooter>
-                    </ModalBody>
-                </Modal>
+                            <Label className='check-label'>
+                                <Input type='checkbox' defaultChecked={false} name='legendary' placeholder='Legendary' value={this.state.legendary} onChange={this.handleCheckbox} />
+                                Legendary
+                            </Label>
+                            <Label className='check-label'>
+                                <Input type='checkbox' defaultChecked={false} name='mythical' placeholder='Mythical' value={this.state.mythical} onChange={this.handleCheckbox} />
+                                Mythical
+                            </Label>
+                            <Label className='check-label'>
+                                <Input type='checkbox' defaultChecked={false} name='baby' placeholder='Baby' value={this.state.baby} onChange={this.handleCheckbox} />
+                                Baby
+                            </Label>
+                            <ModalFooter className='modal-footer'>
+                                <Button color="footer-confirm" onClick={this.submit}>Submit</Button>
+                                <Button color="footer-cancel" onClick={this.showModal}>Cancel</Button>
+                            </ModalFooter>
+                        </ModalBody>
+                    </Modal>
+
+                <div className='results-div'>
+                    {this.state.results.length > 0 ? this.renderSearch() : <h1 style={{backgroundColor: '#aaaaaa', color: 'black'}}>No Pokemon found with the specified criteria!</h1>}
                 </div>
+                <div className='search-button-div'>
+                    <Button className='search-button' onClick={this.showModal}>Search</Button>
+                    <Button className='reset-button' onClick={this.resetResults}>Reset</Button>
+                </div>
+
+
             </div>
 
-            <h1 className='results-header'>Search Results:</h1>
-            <div className='results-div'>
-
-                {this.state.results.length > 0 ? this.renderSearch() : <h1>No Pokemon found with the specified criteria!</h1>}
-            </div>
+            <div className='quiz-nav'>
+                    <NavMenu className='homepage-nav-menu'></NavMenu>
             </div>
             </>
         )

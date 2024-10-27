@@ -1,13 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body {
+  background-color: #3e3b3e;
+}
+
 .quiz {
+  display: flex;
+  flex-direction: column;
+  background-color: #3e3b3e;
+  font-family: Arial, sans-serif;
+}
+
+.guessed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100vw;
+  height: 70vh;
+  transform: translate(0, 10vh);
+}
+
+.score {
+  transform: translate(0, 10vh);
+  color: white;
+  text-decoration: none;
+  font-size: 300%;
+  font-family: 'Lato', sans-serif;
+  margin-left: 5%;
+  max-width: 30;
+}
+
+.guessed-sprite {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  transform: translate(0, 10vh);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 65vw;
+  height: 50vh;
+
+}
+
+
+.small-q-sprite {
+  border: solid;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50vh;
-  background-color: gray;
-  font-family: Arial, sans-serif;
+  border-radius: 15% 15% 15% 15%;
+  background-color: #aaaaaa;
+  margin: .5%;
 }
 
+.nav {
+  max-width: fit-content;
+}
+
+.quiz-nav {
+  display: flex;
+  top: 15%;
+  left: 15%;
+  position: absolute;
+  transform: translate(0, 15vh);
+}
+
+.bio {
+  max-width: 50vw;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 150%;
+  font-family: 'Lato', sans-serif;
+}
+
+.quiz-util {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 30%;
+  transform: translate(0, 10vh);
+  margin-left: 5%;
+}
 .reset-quiz {
   background-color: red;
   border-radius: 5px;
@@ -17,27 +95,54 @@
   text-align: center;
   display: inline-block;
   font-size: 16px;
-  margin: 10px 0;
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 2%;
+  width: 100%;
+
 }
+
+.guess-button {
+  background-color: #12ad12;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+  font-family: 'Lato', sans-serif;
+  margin-top: 2%;
+  width: 100%;
+
+}
+
+.guess-button:hover {
+  background-color: #0d8d0d;
+}
+
+
 
 .reset-quiz:hover {
   background-color: darkred;
 }
 
-.reset-quiz:active, .reset-button:active, .search-button:active {
+.reset-quiz:active, .reset-button:active, .search-button:active, .guess-button:active {
   transform: translateY(2px);
 }
 
 .quiz-text {
   border: 1px solid black;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 16px;
-  width: 200px;
+  border-radius: 10px;
+  padding: 2%;
+  font-size: 25px;
+  width: 100%;
   box-sizing: border-box;
   outline: none;
+  font-family: 'Lato', sans-serif;
 }
 
 .search-button, .reset-button, .footer-confirm, .footer-cancel {
@@ -48,6 +153,13 @@
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
   margin: 5px;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.small-q-sprite * {
+  font-family: 'Lato', sans-serif;
+
 }
 
 .search-button, .footer-confirm {
@@ -56,6 +168,8 @@
 
 .reset-button {
   background-color: red;
+  font-family: 'Lato', sans-serif;
+
 }
 
 .reset-button:hover {
@@ -136,43 +250,88 @@
   padding: 10px;
   border-radius: 5px;
   align-items: center;
+  height: 60vh;
+  overflow-y: scroll;
+  background-color: #aaaaaa;
+  position: absolute;
+  width: 50vw;
+  right: 5%;
 }
 
-.sprite-container, .search-container {
+.search-button-div {
+  transform: translate(19vw, -40vh);
+}
+
+.results-div * {
+  font-family: 'Lato', sans-serif;
+  background-color: white;
+}
+
+.search-container h1 {
+  font-family: 'Lato', sans-serif;
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+
+.sprite-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modal-div {
-  display: flex;
-  flex-direction: column;
-
+.search-nav {
 }
+
+.modal-body {
+  display: grid;
+  justify-content: center;
+}
+
+.modal-body input {
+  width: 100%;
+}
+
+.modal-div {
+  height: 100vh;
+  width: 100vw;
+  
+}
+
 
 .search-modal {
   display: flex;
-  position: absolute;
-  left: 50vw;
-  bottom: -15vh;
-  transform: translate(-50%, -50%);
   z-index: 50;
   border: solid black;
   padding: 2%;
-  background-color: white;
+  background-color: #aaaaaa;
   border-radius: 15px;
-  width: 50vw;
-  justify-content: right;
+  width: 25vw;
+  justify-content: center;
   align-content: center;
   align-items: center;
   text-align: center;
-
-
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5vw;
+  position: absolute;
+  left: 35%;
+  bottom: 75%;
+  margin-bottom: 2.5%;
 }
 
-.search-container, .results-div, .results-header, .search-background {
-  background-color: lightgray;
+
+
+.search-container, .results-header, .search-background {
+  background-color: #3e3b3e;
 }
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 
 .search-background {
   height: 100vh;
@@ -192,8 +351,7 @@
   display: flexbox;
   flex-direction: column;
   align-items: center;
-  min-width: 25vw;
-  max-width: 25vw;
+  min-width: 50%;
 }
 
 .info-container p, h1{
@@ -258,5 +416,74 @@
 }
 
 .me-auto {
+  display: flexbox;
+  flex-direction: column;
+  align-items: center;
   
+}
+
+.me-auto * {
+  margin: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 300%;
+  font-family: 'Lato', sans-serif;
+}
+
+.me-auto *:hover {
+  color: white;
+  transition: ease-in-out .2s;
+  text-shadow: white 0 0 5px;
+}
+
+.me-auto *:active {
+  transform: translateY(2px);
+
+}
+
+.homepage-sprite-container, .homepage-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.homepage-nav {
+  height: 40%;
+  max-height: 40%;
+}
+
+.homepage-sprite-container {
+  padding: 5%;
+}
+
+.homepage-sprite {
+  width: 250%;
+  height: 250%;
+  object-fit: contain;
+  border: solid;
+  border-radius: 15% 15% 15% 15%;
+  padding: 2%;
+  background-color: #aaaaaa;
+}
+
+.homepage-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #3e3b3e;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage-nav-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(0, 50%);
+
 }

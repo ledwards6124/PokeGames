@@ -1,6 +1,7 @@
 import React from 'react';
-import Guessed from './Guessed';
 import NavMenu from './NavMenu';
+import Pokemon from './Pokemon';
+import QuizSprite from './QuizSprite';
 
 class Quiz extends React.Component {
 
@@ -8,8 +9,8 @@ class Quiz extends React.Component {
         super(props);
         this.state = {
             textBox: '',
-            guessedNames: {},
-            guessedDex: new Set()
+            guessed: [],
+            score: 0
         }
     }
 
@@ -34,42 +35,52 @@ class Quiz extends React.Component {
             if (response.status === 200) {
                 return response.json()
             }
-        }).then(jData => {
-        })
+        }).then(jData => {})
         this.setState({
-            guessedNames: {},
-            guessedDex: new Set(),
-            textBox: ''
+            guessed: [],
+            textBox: '',
+            score: 0
         })
     }
 
+    updateGuessed = () => {
+
+        fetch('http://localhost:5000/quiz', {
+            method: 'GET'
+        }).then(response => {
+            if (response.status === 200) {
+                return response.json()
+            }
+        }).then(jData => {
+            console.log(jData.score);
+            this.setState({
+                guessed: jData.guessed.map(el => ({...el})),
+                score: jData.score
+            })
+        })
+        
+    }
+
     guess = () => {
-        let g = this.state.textBox;
-        if (g) {
-            g = g.charAt(0).toUpperCase() + g.slice(1);
-            fetch(`http://localhost:5000/quiz?name=${g}`, {
-                method: 'POST'
+        if (this.state.textBox) {
+            fetch('http://localhost:5000/quiz?name=' + this.state.textBox, {
+                method: 'POST',
             }).then(response => {
                 if (response.status === 200) {
-                    return response.json()
+                    return response.json();
                 }
             }).then(jData => {
-                const guessedInfo = [jData['dex'], jData['name']];
-                this.state.guessedDex.add(guessedInfo[0]);
-                if (!this.state.guessedNames.hasOwnProperty(guessedInfo[0])) {
-                    let gn = this.state.guessedNames;
-                    gn[guessedInfo[0]] = guessedInfo[1];
-                    this.setState({
-                        guessedNames: gn
-                    })
-                }
-                
+                this.updateGuessed();
             })
-        } else {
-            window.alert(`${g} is an invalid guess!`)
+            this.clear();
         }
-        this.clear();
     }
+
+    componentDidMount() {
+        this.beginQuiz();
+    }
+
+
 
     handleKeyPress = (event) => {
         if (event.key === 'Enter') {
@@ -80,18 +91,23 @@ class Quiz extends React.Component {
     render() {
         return (
         <>
-        <NavMenu name={'Quiz'}></NavMenu>
         <div className='quiz'>
-            <div className="overlay">
+            <div className="quiz-util">
                     <button className="reset-quiz" onClick={this.beginQuiz}>Reset Quiz</button>
-            </div>
-            <div className="guess">
                 <input className='quiz-text' onKeyDown={this.handleKeyPress} name='textBox' type="text" placeholder='Guess a Pokemon!' value={this.state.textBox} onChange={this.handleInputChange} />
-                <input onKeyDown={this.handleKeyPress} type="button" value="Guess" onClick={this.guess} />
+                <input className='guess-button' onKeyDown={this.handleKeyPress} type="button" value="Guess" onClick={this.guess} />
             </div>
-            <div className='guessed'>
-                <Guessed guessed={this.state.guessedNames}></Guessed>
+
+                <p className='score'>Score: {this.state.score}</p>
+
+            <div className='quiz-nav'>
+                    <NavMenu className='homepage-nav-menu'></NavMenu>
             </div>
+                <div className='guessed-sprite'>
+                {this.state.guessed.map(res => {
+                    return <QuizSprite key={res[0]} name={res[1]} dex={res[0]}></QuizSprite>
+                })}
+                </div>
         </div>
         </>
         )
