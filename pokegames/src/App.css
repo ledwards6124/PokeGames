@@ -42,6 +42,7 @@ body {
   align-items: center;
   width: 65vw;
   height: 50vh;
+  overflow-y: scroll;
 
 }
 
