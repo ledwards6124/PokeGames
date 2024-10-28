@@ -92,17 +92,19 @@ class Quiz extends React.Component {
         return (
         <>
         <div className='quiz'>
+            
+            <div className='quiz-nav'>
+                    <NavMenu className='homepage-nav-menu'></NavMenu>
+            </div>
+            <p className='score'>Score: {this.state.score}</p>
+
             <div className="quiz-util">
-                    <button className="reset-quiz" onClick={this.beginQuiz}>Reset Quiz</button>
+                <input className="reset-button" onClick={this.beginQuiz} type="button" value="Reset Quiz"/>
                 <input className='quiz-text' onKeyDown={this.handleKeyPress} name='textBox' type="text" placeholder='Guess a Pokemon!' value={this.state.textBox} onChange={this.handleInputChange} />
                 <input className='guess-button' onKeyDown={this.handleKeyPress} type="button" value="Guess" onClick={this.guess} />
             </div>
 
-                <p className='score'>Score: {this.state.score}</p>
 
-            <div className='quiz-nav'>
-                    <NavMenu className='homepage-nav-menu'></NavMenu>
-            </div>
                 <div className='guessed-sprite'>
                 {this.state.guessed.map(res => {
                     return <QuizSprite key={res[0]} name={res[1]} dex={res[0]}></QuizSprite>

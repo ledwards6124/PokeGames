@@ -145,6 +145,9 @@ class Search extends React.Component {
         return (
             <>
             <div className='search-container'>
+            <div className='search-nav'>
+                    <NavMenu className='homepage-nav-menu'></NavMenu>
+            </div>
                 <h1>Results:</h1>
                     <Modal isOpen={this.state.open} toggle={this.showModal} className='search-modal'>
                         <ModalHeader className='modal-header'>Enter Pokemon details here:</ModalHeader>
@@ -195,7 +198,7 @@ class Search extends React.Component {
                     </Modal>
 
                 <div className='results-div'>
-                    {this.state.results.length > 0 ? this.renderSearch() : <h1 style={{backgroundColor: '#aaaaaa', color: 'black'}}>No Pokemon found with the specified criteria!</h1>}
+                    {this.state.results.length > 0 ? this.renderSearch() : <h1 style={{backgroundColor: '#3d3d3d', color: 'white'}}>No Pokemon found with the specified criteria!</h1>}
                 </div>
                 <div className='search-button-div'>
                     <Button className='search-button' onClick={this.showModal}>Search</Button>
@@ -205,9 +208,7 @@ class Search extends React.Component {
 
             </div>
 
-            <div className='quiz-nav'>
-                    <NavMenu className='homepage-nav-menu'></NavMenu>
-            </div>
+
             </>
         )
     }

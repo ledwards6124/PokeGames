@@ -1,0 +1,27 @@
+.me-auto {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 2.25%;
+}
+
+.me-auto * {
+    color: white;
+    text-decoration: none;
+    border: solid;
+    border-radius: 15px;
+    padding: 0.5%;
+    border-color: white;
+    border-width: 2px;
+    min-width: 7%;
+    text-align: center;
+    font-size: 150%;
+
+}
+
+.me-auto *:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
+    transition: 0.2s ease-in-out;
+}
