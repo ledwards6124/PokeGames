@@ -33,7 +33,7 @@ class QuizSprite extends React.Component {
         return (
             <>
                 <div className='small-q-sprite'>
-                    <img style={{width: '90%'}} src={this.state.sprite} alt='Pokemon Sprite'></img>
+                    <img src={this.state.sprite} alt='Pokemon Sprite'></img>
                     <p>{this.props.dex}. {this.props.name}</p>
                 </div>
             </>

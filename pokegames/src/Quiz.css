@@ -1,51 +1,5 @@
-.quiz p {
-    text-align: center;
-    font-size: 250%;
-}
-
-.quiz-util {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-
-}
-
-.quiz-util * {
-    width: 40%;
-    margin: 1.5%;
-    box-sizing: border-box;
-}
-
-.quiz-util input[type='button'] {
-    padding: 1%;
-    width: 30%;
-    border-radius: 15px;
-    font-size: 150%;
-    font-family: 'Lato', sans-serif;
-    border: none;
-}
-
-.quiz-util input[type='text'] {
-    outline: none;
-    border: 2px solid black;
-    transition: 0.2s ease-in-out;
-    padding: 2.5%;
-    border-radius: 15px;
-    border-collapse: separate;
-    font-size: 150%;
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-    width: 30%;
-}
-
-.quiz-util input[type='text']:focus {
-    border: 2px solid rgb(255, 255, 255);
-
-}   
-
 .reset-button {
+    min-width: fit-content;
     background-color: red;
     color: white;
 }
@@ -67,59 +21,161 @@
     transition: 0.2s ease-in-out;
 }
 
+.quiz-util input[type='button'] {
+    padding: 1%;
+    width: 30%;
+    border-radius: 15px;
+    font-size: 150%;
+    font-family: 'Lato', sans-serif;
+    border: none;
+}
+
+.quiz-util input[type='text'] {
+    outline: none;
+    border: 2px solid black;
+    transition: 0.2s ease-in-out;
+    padding: 2.5%;
+    border-radius: 15px;
+    border-collapse: separate;
+    font-size: 150%;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    width: fit-content;
+    transition: all 0.2s;
+}
+
+.quiz-util input[type='text']:focus {
+    border: 2px solid rgb(255, 255, 255);
+    transform: scale(1.1);
+
+}   
+
+
+
 .guess-button:active, .reset-button:active {
     box-shadow: 2px 2px 2px #000000;
     transform: translateY(2px);
     transition: 0.2s ease-in-out;
 }
 
-.guessed-sprite {
-    position: absolute;
-    top: 20%;
-    right: 5%;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    width: 50%;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    max-height: 50%;
-    border: solid;
-    min-height: 50%;
-    border-radius: 15px;
-
+.quiz p {
+    text-align: center;
+    font-size: 250%;
 }
 
-.small-q-sprite {
+.quiz-util {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: #f0f0f0; /* Light gray background */
-    border: 1px solid #d3d3d3; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 10px; /* Some padding */
-    margin: 5px; /* Margin between sprites */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    max-width: 15%;
+    justify-content: center;
+    width: 50%;
+
 }
 
-.small-q-sprite:hover {
-    background-color: #e0e0e0; /* Slightly darker on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
-    transform: translateY(-2px); /* Lift effect on hover */
+.quiz-util * {
+    width: 40%;
+    margin: 1.5%;
+    box-sizing: border-box;
 }
 
+@media (min-width: 768px) {
+    .guessed-sprite {
+        position: absolute;
+        top: 25%;
+        right: 5%;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 50%;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        max-height: 50%;
+        border: solid;
+        min-height: 50%;
+        border-radius: 15px;
 
+    }
+
+    .small-q-sprite {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0; /* Light gray background */
+        border: 1px solid #d3d3d3; /* Light gray border */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        padding: 10px; /* Some padding */
+        margin: 5px; /* Margin between sprites */
+        transition: all 0.3s ease; /* Smooth transition for hover effects */
+        max-width: 15%;
+        color: black;
+        font-size: 50%;
+    }
+
+    .small-q-sprite:hover {
+        background-color: #e0e0e0; /* Slightly darker on hover */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+        transform: translateY(-2px); /* Lift effect on hover */
+    }
+}
+
+@media (max-width: 767px) {
+
+    .quiz-util input[type='button'] {
+        padding: 2.5%;
+    }
+
+    .quiz {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     
+    .quiz-util {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+    }
 
-.small-q-sprite p {
-    font-size: 100%;
-    color: #3d3d3d;
-    text-align: center;
+    .guessed-sprite {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 85%;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        border: solid;
+        border-radius: 15px;
+        height: 50%;
+
+    }
+
+    .small-q-sprite {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0; /* Light gray background */
+        border: 1px solid #d3d3d3; /* Light gray border */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        padding: 10px; /* Some padding */
+        margin: 5px; /* Margin between sprites */
+        transition: all 0.3s ease; /* Smooth transition for hover effects */
+        max-width: 15%;
+        color: black;
+        font-size: 25%;
+    }
+
+    .small-q-sprite:hover {
+        background-color: #e0e0e0; /* Slightly darker on hover */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+        transform: translateY(-2px); /* Lift effect on hover */
+        font-size: 40%;
+        width: 110%;
+    }
 }
-
-
-
-

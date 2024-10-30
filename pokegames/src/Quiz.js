@@ -91,11 +91,12 @@ class Quiz extends React.Component {
     render() {
         return (
         <>
-        <div className='quiz'>
-            
-            <div className='quiz-nav'>
+                    <div className='quiz-nav'>
                     <NavMenu className='homepage-nav-menu'></NavMenu>
             </div>
+        <div className='quiz'>
+            
+
             <p className='score'>Score: {this.state.score}</p>
 
             <div className="quiz-util">
