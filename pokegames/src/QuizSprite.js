@@ -11,7 +11,6 @@ class QuizSprite extends React.Component {
 
     getSprite = () => {
         const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.props.dex}.png`
-        console.log(url);
         fetch(url, {
             method: 'GET'
         }).then(response => {

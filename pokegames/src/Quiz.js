@@ -14,6 +14,10 @@ class Quiz extends React.Component {
         }
     }
 
+    sortGuessed = () => {
+        console.log(this.state.guessed);
+    }
+
     handleInputChange = (event) => {
         const {name, value} = event.target;
         this.setState({
@@ -52,7 +56,6 @@ class Quiz extends React.Component {
                 return response.json()
             }
         }).then(jData => {
-            console.log(jData.score);
             this.setState({
                 guessed: jData.guessed.map(el => ({...el})),
                 score: jData.score
@@ -63,6 +66,7 @@ class Quiz extends React.Component {
 
     guess = () => {
         if (this.state.textBox) {
+            this.sortGuessed();
             fetch('https://ledwards6124.pythonanywhere.com/quiz?name=' + this.state.textBox, {
                 method: 'POST',
             }).then(response => {
@@ -78,6 +82,12 @@ class Quiz extends React.Component {
 
     componentDidMount() {
         this.beginQuiz();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.guessed.length !== prevState.guessed.length) {
+            this.updateGuessed();
+        }
     }
 
 
