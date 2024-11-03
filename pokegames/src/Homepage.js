@@ -46,7 +46,12 @@ class Homepage extends React.Component {
 
     render() {
         return (
+            <>
+            <div className='homepage-nav'>
+            <NavMenu className='homepage-nav-menu'></NavMenu>
+            </div>
             <div className='homepage-div'>
+
                 <div className='homepage-sprite-container'>                    
                     <img className='homepage-sprite' src={this.state.sprite} alt='Pokemon Sprite'></img>
                 </div>
@@ -57,10 +62,9 @@ class Homepage extends React.Component {
                     <p>This is a work in progress!!</p>
                 </div>
 
-                <div className='homepage-nav'>
-                    <NavMenu className='homepage-nav-menu'></NavMenu>
-                </div>
+
             </div>
+            </>
         )
     }
 }

@@ -77,6 +77,32 @@ class Pokemon extends React.Component {
     }
 
 
+    getStyle(mlb) {
+        if (mlb) {
+            return {
+                backgroundColor: '#009420',
+                color: 'white',
+                padding: '5%',
+                borderRadius: '15px',
+                fontWeight: 'bold',
+                boxShadow: '0px 0px 2px 2px rgba(0, 0, 0, 1)'
+
+
+
+            }
+        } else {
+            return {
+                backgroundColor: '#FF0000',
+                color: 'white',
+                padding: '5%',
+                borderRadius: '15px',
+                fontWeight: 'bold',
+                boxShadow: '0px 0px 2px 2px rgba(0, 0, 0, 1)'
+            }
+        }
+    }
+
+
     render() {
 
 
@@ -88,7 +114,9 @@ class Pokemon extends React.Component {
                 </div>
 
             <div className='info-container'>
-                <h1 style={{color: 'black'}}>{this.props.dex}. {this.props.name}</h1>
+                <a target='_blank' href={"https://www.pokemon.com/us/pokedex/" + this.props.name}>
+                    <h1 style={{color: '#3d3d3d'}}>{this.props.dex}. {this.props.name}</h1>
+                </a>
                 <div className='type-container'>
                     <p className='pokemon-info'>Type:</p> {this.props.type.map(t => {
                     return <Type type={t.toLowerCase()}></Type>
@@ -100,9 +128,9 @@ class Pokemon extends React.Component {
                     return <StatBar key={key} stat={key} value={this.state.stats[key]}></StatBar>
                 })}
                 </div>
-                <p className='pokemon-info'>Legendary: {this.props.legendary ? 'Yes' : 'No'}</p>
-                <p className='pokemon-info'>Mythical: {this.props.mythical ? 'Yes' : 'No'}</p>
-                <p className='pokemon-info'>Baby: {this.props.baby ? 'Yes' : 'No'}</p>
+                <p style={this.getStyle(this.props.legendary)} className='pokemon-info'>Legendary: {this.props.legendary ? 'Yes' : 'No'}</p>
+                <p style={this.getStyle(this.props.mythical)} className='pokemon-info'>Mythical: {this.props.mythical ? 'Yes' : 'No'}</p>
+                <p style={this.getStyle(this.props.baby)} className='pokemon-info'>Baby: {this.props.baby ? 'Yes' : 'No'}</p>
             </div>
             </div>
         )
