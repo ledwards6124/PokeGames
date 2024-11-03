@@ -32,3 +32,13 @@
     flex-wrap: wrap;
     text-align: center;
 }
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+    cursor: pointer;
+}

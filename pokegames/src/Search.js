@@ -149,15 +149,15 @@ class Search extends React.Component {
             <div className='search-container'>
 
                 <h1>Results:</h1>
-
-
-                <div className='results-div'>
-                    {this.state.results.length > 0 ? this.renderSearch() : <h1 style={{backgroundColor: '#3d3d3d', color: 'white'}}>No Pokemon found with the specified criteria!</h1>}
-                </div>
                 <div className='search-button-div'>
                     <Button className='search-button' onClick={this.showModal}>Search</Button>
                     <Button className='reset-search-button' onClick={this.resetResults}>Reset</Button>
                 </div>
+
+                <div className='results-div'>
+                    {this.state.results.length > 0 ? this.renderSearch() : <h1 style={{backgroundColor: '#3d3d3d', color: 'white'}}>No Pokemon found with the specified criteria!</h1>}
+                </div>
+
 
 
             </div>
