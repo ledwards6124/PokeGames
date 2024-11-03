@@ -1,6 +1,6 @@
 # PokeGames
 
-**Pokegames** is a web-based Pokémon application built with Python and React.
+**PokeGames** is a web-based Pokémon application built with Python and React.
 
 ## Table of Contents
 
