@@ -21,7 +21,7 @@
 
 .me-auto *:hover {
     background-color: white;
-    color: black;
+    color: #3d3d3d;
     box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
     transition: 0.2s ease-in-out;
 }

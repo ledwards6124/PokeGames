@@ -1,5 +1,164 @@
 
 
+h1 {
+    text-align: center;
+    text-wrap: wrap;
+}
+
+.search-button-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-button-div * {
+    padding: 1%;
+    border-radius: 15px;
+    font-size: 150%;
+    font-family: 'Lato', sans-serif;
+    border: none;
+    margin: 5px;
+    min-width: fit-content;
+    color: white;
+}
+
+.search-button , .submit-button {
+    background-color: rgb(0, 148, 32);
+
+}
+
+.reset-search-button, .clear-button {
+    background-color: red;
+}
+
+.search-button:hover, .submit-button:hover {
+    background-color: darkgreen;
+    box-shadow: 2px 2px 2px #000000;
+    transition: 0.2s ease-in-out;
+}
+
+.reset-search-button:hover, .clear-button:hover {
+    background-color: darkred;
+    box-shadow: 2px 2px 2px #000000;
+    transition: 0.2s ease-in-out;
+}
+
+.search-button:active, .reset-search-button:active, .clear-button:active, .submit-button:active {
+    box-shadow: 2px 2px 2px #000000;
+    transform: translateY(2px);
+    transition: 0.1s ease-in-out;
+}
+
+.modal-title {
+    color: #3d3d3d;
+}
+
+
+
+@media (min-width: 768px) {
+
+    .modal-div {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -55%);
+        width: 50%;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+
+    .search-modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #f0f0f0; /* Light gray background */
+        min-width: 35%;
+        border-radius: 15px;
+    }
+
+    
+
+    .input-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        color: #3d3d3d;
+
+    }
+
+    input[type='text'], input[type='number'] {
+        padding: 5%;
+        border-radius: 15px;
+        transition: 0.1s ease-in-out;
+    }
+
+    input[type='text']:focus, input[type='number']:focus {
+        border: 2px solid rgb(255, 255, 255);
+        transform: scale(1.1);
+    }  
+    
+    .check-label {        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        color: #3d3d3d;
+        border-radius: 15px;
+    }
+    
+    .check-label:hover {
+        transition: 0.3s ease-in-out;
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .footer * {
+        padding: 5%;
+        border-radius: 15px;
+        font-size: 150%;
+        font-family: 'Lato', sans-serif;
+        border: none;
+        margin: 5px;
+        min-width: fit-content;
+        color: white;
+    }
+
+    .results-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        border: solid 2px white;
+        border-radius: 15px;
+        overflow-y: scroll;
+        scrollbar-width: thin;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-height: 50vh;
+    }
+
+
+
+    
+
+}
+
 @media (max-width: 767px) {
     
 }

@@ -40,19 +40,18 @@ class Search extends React.Component {
     }
 
     showModal = () => {
-        console.log(this.state.open);
         this.setState({ open: !this.state.open });
     }
 
     getQuery = () => {
         let query = '';
-        if (this.state.dex) {
+        if (this.state.dex && this.state.dex > 0 && this.state.dex < 1027) {
             query += `id=${this.state.dex}&`;
         }
         if (this.state.name) {
             query += `name=${this.state.name}&`;
         }
-        if (this.state.generation) {
+        if (this.state.generation && this.state.generation > 0 && this.state.generation < 10) {
             query += `generation=${this.state.generation}&`;
         }
         if (this.state.pType) {
@@ -64,7 +63,7 @@ class Search extends React.Component {
         if (this.state.color) {
             query += `color=${this.state.color}&`;
         }
-        if (this.state.legendary === true) {
+        if (this.state.legendary) {
             query += `legendary=${this.state.legendary}&`;
         }
         if (this.state.mythical) {
@@ -144,69 +143,46 @@ class Search extends React.Component {
 
         return (
             <>
-            <div className='search-container'>
             <div className='search-nav'>
                     <NavMenu className='homepage-nav-menu'></NavMenu>
             </div>
-                <h1>Results:</h1>
-                    <Modal isOpen={this.state.open} toggle={this.showModal} className='search-modal'>
-                        <ModalHeader className='modal-header'>Enter Pokemon details here:</ModalHeader>
-                        <ModalBody className='modal-body'>
-                            
-                            <Label>
-                                Dex Number:
-                                <Input className='modal-field' type='number' min={1} max={1025} name='dex' placeholder='Dex Number' value={this.state.dex} onChange={this.handleInputChange} />
-                            </Label>
-                            <Label>
-                                Name:
-                                <Input className='modal-field' type='text' name='name' placeholder='Name' value={this.state.name} onChange={this.handleInputChange} />
-                            </Label>
-                            <Label>
-                                Generation:
-                                <Input className='modal-field' type='number' min={1} max={9} name='generation' placeholder='Generation' value={this.state.generation} onChange={this.handleInputChange} />
-                            </Label>
-                            <Label>
-                                Primary Type:
-                                <Input className='modal-field' type='text' name='pType' placeholder='Primary Type' value={this.state.pType} onChange={this.handleInputChange} />
-                            </Label>
-                            <Label>
-                                Secondary Type:
-                                <Input className='modal-field' type='text' name='sType' placeholder='Secondary Type' value={this.state.sType} onChange={this.handleInputChange}/>
-                            </Label>
-                            <Label>
-                                Color:
-                                <Input className='modal-field' type='text' name='color' placeholder='Color' value={this.state.color} onChange={this.handleInputChange} />
-                            </Label>
+            <div className='search-container'>
 
-                            <Label className='check-label'>
-                                <Input type='checkbox' defaultChecked={false} name='legendary' placeholder='Legendary' value={this.state.legendary} onChange={this.handleCheckbox} />
-                                Legendary
-                            </Label>
-                            <Label className='check-label'>
-                                <Input type='checkbox' defaultChecked={false} name='mythical' placeholder='Mythical' value={this.state.mythical} onChange={this.handleCheckbox} />
-                                Mythical
-                            </Label>
-                            <Label className='check-label'>
-                                <Input type='checkbox' defaultChecked={false} name='baby' placeholder='Baby' value={this.state.baby} onChange={this.handleCheckbox} />
-                                Baby
-                            </Label>
-                            <ModalFooter className='modal-footer'>
-                                <Button color="footer-confirm" onClick={this.submit}>Submit</Button>
-                                <Button color="footer-cancel" onClick={this.showModal}>Cancel</Button>
-                            </ModalFooter>
-                        </ModalBody>
-                    </Modal>
+                <h1>Results:</h1>
+
 
                 <div className='results-div'>
                     {this.state.results.length > 0 ? this.renderSearch() : <h1 style={{backgroundColor: '#3d3d3d', color: 'white'}}>No Pokemon found with the specified criteria!</h1>}
                 </div>
                 <div className='search-button-div'>
                     <Button className='search-button' onClick={this.showModal}>Search</Button>
-                    <Button className='reset-button' onClick={this.resetResults}>Reset</Button>
+                    <Button className='reset-search-button' onClick={this.resetResults}>Reset</Button>
                 </div>
 
 
             </div>
+
+            <div className='modal-div'>
+                       {this.state.open && (
+                        <form className='search-modal'>
+                        <h1 className='modal-title'>Enter Pokemon details here:</h1>
+                        <label className='input-label'>Dex Number: <input placeholder='ex: 1' type='number'  name='dex' value={this.state.dex} onChange={this.handleInputChange}></input></label>
+                        <label className='input-label'>Name: <input placeholder='ex: Bulbasaur' type='text' name='name' value={this.state.name} onChange={this.handleInputChange}></input></label>
+                        <label className='input-label'>Primary Type: <input placeholder='ex: Grass' type='text' name='pType' value={this.state.pType} onChange={this.handleInputChange}></input></label>
+                        <label className='input-label'>Secondary Type: <input placeholder='ex: Poison' type='text' name='sType' value={this.state.sType} onChange={this.handleInputChange}></input></label>
+                        <label className='input-label'>Generation: <input placeholder='ex: 1' type='number' name='generation' value={this.state.generation} onChange={this.handleInputChange}></input></label>
+
+                        <label className='check-label'>Legendary: <input type='checkbox' name='legendary' checked={this.state.legendary} onChange={this.handleCheckbox}></input></label>
+                        <label className='check-label'>Mythical: <input type='checkbox' name='mythical' checked={this.state.mythical} onChange={this.handleCheckbox}></input></label>
+                        <label className='check-label'>Baby: <input type='checkbox' name='baby' checked={this.state.baby} onChange={this.handleCheckbox}></input></label>
+                        
+                        <div className='footer'>
+                            <input className='submit-button' type='button' onClick={this.submit} value='Submit'></input>
+                            <input className='clear-button' type='button' onClick={this.showModal} value='Clear'></input>
+                        </div>
+                    </form> 
+                       )}
+                    </div>
 
 
             </>

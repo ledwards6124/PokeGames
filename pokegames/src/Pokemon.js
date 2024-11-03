@@ -88,7 +88,7 @@ class Pokemon extends React.Component {
                 </div>
 
             <div className='info-container'>
-                <h1 style={{color: 'black'}}>{this.props.dex}. {this.props.name}</h1>
+                <h1 style={{color: '#3d3d3d'}}>{this.props.dex}. {this.props.name}</h1>
                 <div className='type-container'>
                     <p className='pokemon-info'>Type:</p> {this.props.type.map(t => {
                     return <Type type={t.toLowerCase()}></Type>
