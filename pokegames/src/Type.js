@@ -35,12 +35,12 @@ class Type extends React.Component {
                 backgroundColor: this.colors[this.props.type],
                 borderRadius: '10% 10% 10% 10%',
                 height: '115%',
-                width: '50%',
+                width: '70%',
+                minWidth: '100%',
                 border: '2px solid black',
                 textAlign: 'center',
                 color: 'white',
                 textShadow: '2px 2px 2px black',
-                maxWidth: '4.5vw',
                 textAlign: 'center',
 
 
