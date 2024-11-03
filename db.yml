@@ -1,5 +1,0 @@
-host: localhost
-database: Pokemon
-user: postgres
-password: Luke1503.
-port: 5432
