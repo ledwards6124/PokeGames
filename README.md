@@ -19,7 +19,7 @@ Deploy to your preferred hosting platform
 Troubleshooting
 npm run build fails to minify: Check the Create React App documentation for solutions.
 
-Pokegames is also hosted using PythonAnywhere and Vercel at https://poke-games-git-css-rework-homepage-ledwards6124s-projects.vercel.app/
+Pokegames is also hosted using PythonAnywhere and Vercel at https://poke-games-q6bo4ce7r-ledwards6124s-projects.vercel.app/quiz
 
 License
 Pokegames is licensed under the MIT License.
